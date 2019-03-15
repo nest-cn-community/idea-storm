@@ -1,6 +1,6 @@
 > 前言：官方文档在这方面还是没有讲清楚什么使用，怎么应用，只是给了个大概的配置和大致的使用方式，限制在单数据流缓存get请求的数据上面，并没有实质意义上用到缓存的处理。于是博主花了接近一个星期翻看源码以及逐步测试，发现实际上使用真的很简单，这里确实要夸一下nestjs的封装。接下来博主就以验证码缓存来着重介绍其用法。
 
-###1、源码分析：
+### 1、源码分析：
 通过官方文档，我们知道要写个拦截器继承CacheInterceptor进行对服务的交互处理，于是让我们查看一下它做了什么操作：
 ```javascript
 let CacheInterceptor = class CacheInterceptor {
@@ -39,18 +39,18 @@ let CacheInterceptor = class CacheInterceptor {
 };
 ```
 
-####1.1、trackBy()
+#### 1.1、trackBy()
 此方法传递一个context上下文进来，通过上下文获取我们请求的对象，如果是get请求，则找到此时在请求阶段promise的CacheKey的值；如果是post或其他请求方式则不做操作。
 
-####1.2、intercept()
+#### 1.2、intercept()
 此方法对服务端回数据制做进一步的处理，通过rxjs的分发机制，我们可以了解到，它分发了我们此次请求回来的response数据，同时也通过构造中的cacheManager来保存了当前的response。更为重要的是根据它自定义的trackBy方法获取了之前的key值，这点很关键。我们后面获取数据时的必要条件。
 
-###2、自定义拦截器：
+### 2、自定义拦截器：
 
-####2.1、需求
+#### 2.1、需求
 > 在我们开始编程的时候必须先理清楚我们需求的功能，我们需要缓存此次的验证码，并且通过key再次获取它进行进一步的验证。
 
-####2.2、分别建立两个拦截器：
+#### 2.2、分别建立两个拦截器：
 
 **PutCodeInterceptor**
 ```typescript
@@ -76,7 +76,7 @@ export class GetCodeInterceptor extends CacheInterceptor {
 
 > **分析：** PutCodeInterceptor 将key值通过request来进行获取，这里我简单的写死为'smsKey'，这样便可以通过CacheIntercepter的 intercept方法获取此key来根据key缓存response。 然后作为再次获取此缓存的value ，再次添加GetCodeInterceptor 重写 CacheIntercepter 的 intercept方法 ，最终通过cacheManager的get()方法获取方才缓存的response，最终可以通过缓存的response来进行判断处理，我这里为了方便起见直接当result返回了。
 
-###3、使用：
+### 3、使用：
 
 ```typescript
 @Controller('sms')
