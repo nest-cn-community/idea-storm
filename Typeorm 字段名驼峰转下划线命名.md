@@ -1,6 +1,6 @@
 > 官网上面没有直接提示和说明如何驼峰转下划线，就算是查询API，和下载demo 里面都没有详细提供参考，特此根据使用经验，开辟此文章来完成对此方式详细说明。
 
-###1、Column
+### 1、Column
 ```typescript
     @Column()
     abc_abc;
@@ -11,7 +11,7 @@
 
 >直接写下划线命名即可在数据库中显示为下划线名称，如果讲究十分规范的话，请使用下面的写发，指定name为下划线名称。
 
-###2、OneToOne && ManyToOne
+### 2、OneToOne && ManyToOne
 ```typescript
     @OneToOne(……)
     @JoinColumn({ name: 'abc_abc'})
@@ -23,7 +23,7 @@
 ```
 > OneToOne和 ManyToOne在同样的条件下会指定对应的外键，直接通过JoinColumn的name属性来控制外键名称。
 
-###3、ManyToMany
+### 3、ManyToMany
 ```typescript
     @ManyToMany(......)
     @JoinTable({name:'tableName' 
