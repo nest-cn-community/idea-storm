@@ -1,6 +1,6 @@
 > 网上查看了很多文档，发现很多都是自己实现中间件来完成此功能，不仅浪费时间，而且增加了太多的代码量。实际上，nest已经帮助我们封装好了相关功能。
 
-###1、查找线索
+### 1、查找线索
 由于官方文档没有做详细解释说明，那么我们可以从此框架底层入手：
 **我们知道，nestjs底层用的是express，那么express是通过什么来完成静态目录构建的：**
 >**serve-static**
@@ -118,7 +118,7 @@ declare namespace serveStatic {
 export = serveStatic;
 
 ```
-###3、使用方式：
+### 3、使用方式：
 >说明：源码中的注释说的很清楚用法，由于现阶段技术有限，博主将项目目录作为文件地址来简单的使用。
 
 **代码使用：只需要一句代码：**
@@ -148,7 +148,7 @@ bootstrap();
 ![目录创建.png](https://upload-images.jianshu.io/upload_images/4253553-5d4d2203cb6eef82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-###4、测试效果：
+### 4、测试效果：
 首先使用nestjs自带的upload api来上传文件，这里不做过多说明，最终通过postman完成测试文件上传：
 
 ![测试上传.png](https://upload-images.jianshu.io/upload_images/4253553-5b2498b7fa8aa1e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
