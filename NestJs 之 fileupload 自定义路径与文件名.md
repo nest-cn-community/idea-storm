@@ -1,3 +1,4 @@
+# NestJs之fileupload 自定义路径与文件名
 >在写nest项目的时候，写到fileupload 这段时，根据官方文档，发现，上传过来的文件全部都变成了一串加密的编码，例如：
 ![加密编码图示.png](https://upload-images.jianshu.io/upload_images/4253553-4003bebd9c411a8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
