@@ -43,3 +43,7 @@
       1、joincolumn 是本表内部成员映射，其referencedColumnName 一定指向本表主键ID。
       2、inverseJoinColumn 是ManyToMany 映射对象表的属性，这里一定指向其表主键ID。
       3、两表主键ID一定要类型、长度保持一致，不然会报 "**ERROR 1215 (HY000): Cannot add foreign key constraint**" 错误。
+
+
+---
+*provider by stormKid*

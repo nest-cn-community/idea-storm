@@ -40,3 +40,6 @@ export class UploadController {
 
 这样就完成了我们对文件目录及名称的自定义。
 
+---
+*provider by stormKid*
+
