@@ -13,3 +13,4 @@ nestjs 相关技术的学习心得分享
 ### TypeORM
 
 - [Typeorm 字段名驼峰转下划线命名](./typeorm/Typeorm-字段名驼峰转下划线命名.md)
+- [Typeorm 分页查询](https://github.com/dzzzzzy/Nestjs-Learning/blob/master/issues/typeorm/pagination/README.md)
